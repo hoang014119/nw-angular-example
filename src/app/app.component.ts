@@ -41,6 +41,10 @@ export class AppComponent {
     ];
   }
 
+  test() {
+    console.log('files', window.nw.require('fs').readdirSync('.').join(', '))
+  }
+
   // public open(event: Event, link: LinkType) {
   //   event.preventDefault();
   //   window.nw.Shell.openExternal(link.url);
