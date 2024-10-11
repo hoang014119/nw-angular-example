@@ -20,7 +20,9 @@
     "dev:nw": "wait-on -c waitOn.config.json http-get://localhost:4200 && nw .",
     "bld": "npm run bld:ng && npm run bld:nw",
     "bld:ng": "ng build --output-path ./out/ng",
-    "bld:nw": "nwbuild --cacheDir=./node_modules/nw --outDir=./out/nw --managedManifest=./package.nw.json ./package.json ./out/ng/*"
+    "bld:nw": "nwbuild --cacheDir=./node_modules/nw --outDir=./out/nw --managedManifest=./package.nw.json ./package.json ./out/ng/*",
+    "bld-sdk": "npm run bld:ng && npm run bld:nw-sdk",
+    "bld:nw-sdk": "nwbuild --flavor sdk --cacheDir=./node_modules/nw --outDir=./out/nw --managedManifest=./package.nw.json ./package.json ./out/ng/*"
   },
   "private": true,
   "volta": {
@@ -71,5 +73,8 @@
     "wait-on": "^7.2.0",
     "zone.js": "~0.14.7"
   },
-  "chromium-args": "--enable-spell-checking"
+  "chromium-args": "--enable-spell-checking",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }

@@ -17,10 +17,10 @@ export class AppComponent {
   title = 'nw-angular-example';
 
   versions = '' +
-  'You are running NW.js (v' + window?.nw?.process?.versions?.nw + ' ' + window?.nw?.process?.versions['nw-flavor'] + '), ' +
-  'Node.js (v' + window?.nw?.process?.versions?.node + '), ' +
-  'Chromium (v' + window?.nw?.process?.versions?.chromium + '), ' +
-  'and Angular (v' + nodeManifest.version + ').';
+    'You are running NW.js (v' + window?.nw?.process?.versions?.nw + ' ' + window?.nw?.process?.versions['nw-flavor'] + '), ' +
+    'Node.js (v' + window?.nw?.process?.versions?.node + '), ' +
+    'Chromium (v' + window?.nw?.process?.versions?.chromium + '), ' +
+    'and Angular (v' + nodeManifest.version + ').';
 
   public links: LinkType[];
 
@@ -43,6 +43,17 @@ export class AppComponent {
 
   test() {
     console.log('files', window.nw.require('fs').readdirSync('.').join(', '))
+    const express = window.nw.require('express')
+    const app = express()
+    const port = 3000
+
+    app.get('/', (req: any, res: any) => {
+      res.send('Hello World!')
+    })
+
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`)
+    })
   }
 
   // public open(event: Event, link: LinkType) {
